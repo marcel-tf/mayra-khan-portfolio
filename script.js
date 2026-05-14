@@ -18,11 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
     link.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
 
+      // Only handle anchor links within the same page
       if(href.startsWith('#')){
-        e.preventDefault();
         const target = document.querySelector(href);
 
         if(target){
+          e.preventDefault();
           const headerHeight = header ? header.offsetHeight : 80;
           const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
 
@@ -33,6 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Close mobile menu if open
+        if(nav.classList.contains('open')){
+          nav.classList.remove('open');
+        }
+      } else {
+        // For regular page links, just close the mobile menu
         if(nav.classList.contains('open')){
           nav.classList.remove('open');
         }
@@ -101,5 +107,22 @@ document.addEventListener('DOMContentLoaded', function() {
   const animatedElements = document.querySelectorAll('.featured-card, .board-card, .service-card, .media-card, .award-logo, .timeline-item');
   animatedElements.forEach(el => {
     observer.observe(el);
+  });
+
+  // Highlight current page in navigation
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.nav a');
+
+  navLinks.forEach(link => {
+    const linkHref = link.getAttribute('href');
+    // Remove existing active classes
+    link.classList.remove('active');
+
+    // Add active class if this is the current page
+    if (linkHref === currentPage ||
+        (currentPage === '' && linkHref === 'index.html') ||
+        (currentPage === 'index.html' && linkHref === 'index.html')) {
+      link.classList.add('active');
+    }
   });
 });
