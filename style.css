@@ -197,6 +197,34 @@ a {
   min-height: 700px;
   display: flex;
   flex-direction: column;
+  background: #1A3D5C;
+}
+
+/* Hero Carousel */
+.hero-carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .hero-background {
@@ -212,8 +240,19 @@ a {
 .hero-bg-image {
   width: 100%;
   height: 100%;
+}
+
+/* Banner 1 - Imagen vertical (cover) */
+.hero-bg-cover {
   object-fit: cover;
   object-position: 65% top;
+}
+
+/* Banner 2 - Imagen horizontal (contain - siempre completa) */
+.hero-bg-contain {
+  object-fit: contain;
+  object-position: center;
+  background: #1A3D5C;
 }
 
 .hero-overlay {
@@ -226,7 +265,39 @@ a {
   z-index: 2;
 }
 
-.hero-section .container {
+/* Carousel Navigation Dots */
+.carousel-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+.carousel-dot.active {
+  background: #E8C360;
+  border-color: #E8C360;
+}
+
+.hero-slide .container {
   position: relative;
   z-index: 3;
   flex: 1;
@@ -234,6 +305,7 @@ a {
   grid-template-columns: 1fr 1fr;
   align-items: center;
   padding: 60px 20px;
+  height: 100%;
 }
 
 .hero-content {
@@ -333,29 +405,6 @@ a {
   text-align: center;
 }
 
-.hero-gallery {
-  position: relative;
-  z-index: 3;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  margin-top: auto;
-}
-
-.gallery-item {
-  position: relative;
-  overflow: hidden;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  display: block;
-  border: 5px solid #FFFFFF;
-  box-sizing: border-box;
-}
-
 /* =========================================================
    MY STORY SECTION
    ========================================================= */
@@ -430,6 +479,16 @@ a {
   display: inline-block;
   margin: 0 auto 30px;
   border-radius: 3px;
+}
+
+/* Subtítulo simple (sin caja) */
+.story-subtitle-simple {
+  color: #E8C360;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+  margin: 0 auto 30px;
 }
 
 /* Párrafos de texto */
@@ -1008,7 +1067,7 @@ a {
 
 .formation-main-title {
   font-family: 'Playfair Display', serif;
-  font-size: 48px;
+  font-size: 56px;
   font-weight: 700;
   color: #1C1C1C;
   text-align: center;
@@ -1244,7 +1303,7 @@ a {
   font-family: 'Playfair Display', serif;
   font-size: 56px;
   font-weight: 700;
-  color: #1A3D5C;
+  color: #1C1C1C;
   margin-bottom: 15px;
   letter-spacing: 0.02em;
 }
@@ -1616,9 +1675,9 @@ a {
 
 .featured-title {
   font-family: 'Playfair Display', serif;
-  font-size: 48px;
+  font-size: 56px;
   font-weight: 700;
-  color: #1A3D5C;
+  color: #1C1C1C;
   margin-bottom: 10px;
   letter-spacing: 0.02em;
 }
@@ -1704,7 +1763,7 @@ a {
   font-family: 'Playfair Display', serif;
   font-size: 56px;
   font-weight: 700;
-  color: #1A3D5C;
+  color: #1C1C1C;
   margin-bottom: 10px;
   letter-spacing: 0.02em;
   text-align: left;
@@ -1892,7 +1951,7 @@ a {
 
 .forbes-article-title {
   font-family: 'Playfair Display', serif;
-  font-size: 32px;
+  font-size: 56px;
   font-weight: 700;
   color: #1C1C1C;
   margin-bottom: 25px;
@@ -2068,6 +2127,40 @@ a {
 }
 
 /* =========================================================
+   BOTTOM GALLERY SECTION
+   ========================================================= */
+.bottom-gallery {
+  background: #FFFFFF;
+  padding: 0;
+  margin: 0;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.gallery-grid .gallery-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-grid .gallery-item img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  border: 5px solid #FFFFFF;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid .gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* =========================================================
    FOOTER
    ========================================================= */
 .footer {
@@ -2183,9 +2276,9 @@ a {
    CONNECT PAGE
    ========================================================= */
 .connect-hero {
-  background: #1A3D5C;
-  color: #FFFFFF;
-  padding: 80px 20px;
+  background: #FFFFFF;
+  color: #1A3D5C;
+  padding: 40px 20px 20px;
   text-align: center;
 }
 
@@ -2193,20 +2286,22 @@ a {
   font-family: 'Playfair Display', serif;
   font-size: 56px;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   letter-spacing: 0.02em;
+  color: #1C1C1C;
 }
 
 .connect-hero p {
   font-size: 18px;
   max-width: 700px;
-  margin: 0 auto 40px;
+  margin: 0 auto;
   line-height: 1.6;
+  color: #1C1C1C;
 }
 
 .calendar-container {
   background: #FFFFFF;
-  padding: 60px 20px;
+  padding: 20px 20px 60px;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -2270,7 +2365,7 @@ a {
    RESPONSIVE
    ========================================================= */
 @media (max-width: 1024px) {
-  .hero-section .container {
+  .hero-slide .container {
     grid-template-columns: 1fr;
     padding: 40px 20px;
   }
@@ -2480,11 +2575,11 @@ a {
     font-size: 32px;
   }
 
-  .hero-gallery {
+  .gallery-grid {
     grid-template-columns: 1fr;
   }
 
-  .gallery-item img {
+  .gallery-grid .gallery-item img {
     height: 220px;
   }
 

@@ -5,6 +5,50 @@ document.addEventListener('DOMContentLoaded', function() {
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelectorAll('.nav a');
 
+  // Hero Carousel functionality
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  const carouselDots = document.querySelectorAll('.carousel-dot');
+  let currentSlide = 0;
+  let carouselInterval;
+
+  function showSlide(index) {
+    // Remove active class from all slides and dots
+    heroSlides.forEach(slide => slide.classList.remove('active'));
+    carouselDots.forEach(dot => dot.classList.remove('active'));
+
+    // Add active class to current slide and dot
+    heroSlides[index].classList.add('active');
+    carouselDots[index].classList.add('active');
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % heroSlides.length;
+    showSlide(currentSlide);
+  }
+
+  function startCarousel() {
+    carouselInterval = setInterval(nextSlide, 8000); // Change slide every 8 seconds
+  }
+
+  function stopCarousel() {
+    clearInterval(carouselInterval);
+  }
+
+  // Manual navigation with dots
+  carouselDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentSlide = index;
+      showSlide(currentSlide);
+      stopCarousel();
+      startCarousel(); // Restart auto-play after manual selection
+    });
+  });
+
+  // Start carousel if slides exist
+  if (heroSlides.length > 0) {
+    startCarousel();
+  }
+
   // Mobile menu toggle
   if(toggle){
     toggle.addEventListener('click', () => {
