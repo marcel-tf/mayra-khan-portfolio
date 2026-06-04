@@ -73,6 +73,11 @@ a {
   text-align: center;
 }
 
+.logo-signature a {
+  display: block;
+  text-decoration: none;
+}
+
 .logo-image {
   height: 96px;
   width: auto;
@@ -1383,6 +1388,12 @@ a {
 .board-link:hover {
   color: #7BC4E8;
   text-decoration: underline;
+}
+
+.board-text {
+  font-size: 13px;
+  color: #5BA3D0;
+  font-style: italic;
 }
 
 .boards-grid {
