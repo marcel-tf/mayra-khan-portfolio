@@ -1662,14 +1662,14 @@ a {
 }
 
 .linkedin-section-header {
-  text-align: left;
-  margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .linkedin-logo-full {
   width: 200px;
   height: auto;
-  margin-bottom: 15px;
+  margin: 0 auto 20px;
   display: block;
 }
 
@@ -1678,14 +1678,14 @@ a {
   font-size: 56px;
   font-weight: 700;
   color: #1C1C1C;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   letter-spacing: 0.02em;
 }
 
 .featured-subtitle {
   font-size: 18px;
   color: #1A3D5C;
-  font-weight: 400;
+  font-weight: 600;
   margin: 0;
 }
 
@@ -1917,45 +1917,35 @@ a {
    ========================================================= */
 .forbes-section {
   background: #FFFFFF;
-  padding: 0;
+  padding: 80px 0;
 }
 
-/* Forbes banner removed - multi-page structure */
-
-.forbes-black-box {
-  background: #000000;
-  border-radius: 20px;
-  padding: 20px;
+.forbes-header {
   text-align: center;
-  margin-bottom: 40px;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 60px;
 }
 
-.forbes-logo-text {
+.forbes-header h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 42px;
+  font-size: 56px;
   font-weight: 700;
-  color: #FFFFFF;
-  margin: 0;
+  color: #1C1C1C;
+  margin-bottom: 15px;
   letter-spacing: 0.02em;
+}
+
+.forbes-header p {
+  font-size: 18px;
+  color: #1A3D5C;
+  font-weight: 600;
+  margin: 0;
 }
 
 .forbes-content-new {
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
-  padding: 0 20px 80px;
-}
-
-.forbes-article-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 56px;
-  font-weight: 700;
-  color: #1C1C1C;
-  margin-bottom: 25px;
-  line-height: 1.4;
+  padding: 0 20px;
 }
 
 .forbes-article-desc {
